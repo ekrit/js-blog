@@ -1,12 +1,16 @@
 const express = require('express')
+const morgan = require('morgan')
 
 // exprees app
 
 const app = express();
 
+app.set('view engine', 'ejs')
+
 app.listen(3000)
 
-app.set('view engine', 'ejs')
+app.use(express.static('public'))
+app.use(morgan('dev'));
 
 app.get('/', (req,res)=>{
     const blogs = [
